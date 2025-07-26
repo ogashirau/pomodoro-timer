@@ -1,162 +1,180 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Keep a clean, readable font */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #282c34; /* Dark background */
-    color: #e0e0e0; /* Light text */
+    background-color: #F7F5EB; /* Starbucks-like cream/off-white background */
+    color: #4A2C2A; /* Dark brown for main text */
     margin: 0;
     padding: 20px;
     box-sizing: border-box;
 }
 
 .pomodoro-app {
-    background-color: #3a404a; /* Slightly lighter dark for container */
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    background-color: #FFFFFF; /* Clean white for the main app container */
+    border-radius: 20px; /* More rounded corners */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); /* Softer, more spread out shadow */
     padding: 40px;
     text-align: center;
-    max-width: 500px;
+    max-width: 550px; /* Slightly wider */
     width: 100%;
+    border: 1px solid #E0E0E0; /* Subtle light border */
 }
 
 h1 {
-    color: #61dafb; /* Accent color */
+    color: #00704A; /* Starbucks Green for title */
     margin-bottom: 30px;
-    font-size: 2.5rem;
+    font-size: 2.8rem; /* Slightly larger title */
+    font-weight: 600;
 }
 
 .timer-container {
-    font-size: 7rem;
+    font-size: 7.5rem; /* Larger timer font */
     font-weight: bold;
     margin-bottom: 30px;
-    color: #ffffff;
-    letter-spacing: 2px;
+    color: #4A2C2A; /* Dark brown for timer */
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05); /* Subtle text shadow */
 }
 
 .controls button {
-    background-color: #61dafb; /* Accent color for buttons */
-    color: #282c34;
+    background-color: #00704A; /* Starbucks Green for buttons */
+    color: #FFFFFF; /* White text on buttons */
     border: none;
-    border-radius: 8px;
-    padding: 15px 30px;
+    border-radius: 10px; /* More rounded buttons */
+    padding: 15px 35px;
     margin: 0 10px;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Softer button shadow */
 }
 
 .controls button:hover {
-    background-color: #21a1f1; /* Darker accent on hover */
-    transform: translateY(-2px);
+    background-color: #005F3C; /* Darker green on hover */
+    transform: translateY(-3px); /* More pronounced lift */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .controls button:active {
     transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .settings {
     margin-top: 40px;
     padding-top: 30px;
-    border-top: 1px solid #444;
+    border-top: 1px solid #E0E0E0; /* Lighter border */
 }
 
 .settings div {
-    margin-bottom: 15px;
+    margin-bottom: 18px; /* Slightly more space */
 }
 
 .settings label {
-    font-size: 1.1rem;
-    margin-right: 10px;
-    color: #b0b0b0;
+    font-size: 1.2rem; /* Slightly larger label */
+    margin-right: 15px; /* More space */
+    color: #4A2C2A; /* Dark brown for labels */
+    font-weight: 500;
 }
 
 .settings input {
-    width: 80px;
-    padding: 8px;
-    border: 1px solid #555;
-    border-radius: 5px;
-    background-color: #4a505a;
-    color: #e0e0e0;
-    font-size: 1.1rem;
+    width: 90px; /* Slightly wider input */
+    padding: 10px;
+    border: 1px solid #CCCCCC; /* Lighter input border */
+    border-radius: 8px; /* More rounded input */
+    background-color: #FDFDFD; /* Very light background */
+    color: #4A2C2A;
+    font-size: 1.2rem;
     text-align: center;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05); /* Subtle inner shadow */
 }
 
 .log-container {
     margin-top: 40px;
     padding-top: 30px;
-    border-top: 1px solid #444;
+    border-top: 1px solid #E0E0E0;
     text-align: left;
 }
 
 .log-container h2 {
-    color: #61dafb;
-    font-size: 1.8rem;
-    margin-bottom: 20px;
+    color: #00704A; /* Starbucks Green for log title */
+    font-size: 2rem;
+    margin-bottom: 25px;
     text-align: center;
+    font-weight: 600;
 }
 
 #log-list {
     list-style-type: none;
     padding: 0;
-    max-height: 200px;
+    max-height: 220px; /* Slightly taller log list */
     overflow-y: auto;
-    margin-bottom: 20px;
-    background-color: #4a505a;
-    border-radius: 8px;
-    padding: 15px;
+    margin-bottom: 25px;
+    background-color: #FDFDFD; /* Very light background for log list */
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #E0E0E0;
 }
 
 #log-list li {
-    background-color: #5a606a;
-    margin-bottom: 8px;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 0.95rem;
-    color: #c0c0c0;
+    background-color: #F0F0F0; /* Light grey for log items */
+    margin-bottom: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #4A2C2A;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow for log items */
 }
 
 #clear-log-btn {
-    background-color: #dc3545; /* Red for clear button */
+    background-color: #A0A0A0; /* Muted grey for clear button */
     color: white;
     border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-size: 1rem;
+    border-radius: 10px;
+    padding: 12px 25px;
+    font-size: 1.1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #clear-log-btn:hover {
-    background-color: #c82333;
+    background-color: #808080;
 }
 
 /* Basic responsiveness */
 @media (max-width: 600px) {
     .pomodoro-app {
-        padding: 20px;
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
     }
 
     .timer-container {
-        font-size: 5rem;
+        font-size: 6rem;
     }
 
     .controls button {
-        padding: 12px 20px;
-        font-size: 1.1rem;
-        margin: 0 5px;
+        padding: 12px 25px;
+        font-size: 1.2rem;
+        margin: 0 8px;
     }
 
     .settings label,
     .settings input {
-        font-size: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .log-container h2 {
+        font-size: 1.6rem;
     }
 }
