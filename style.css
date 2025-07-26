@@ -1,0 +1,53 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.timer-container {
+    font-size: 6rem;
+    margin-bottom: 20px;
+}
+
+.controls button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.settings {
+    margin-top: 20px;
+}
+
+.settings label {
+    font-size: 1rem;
+}
+
+.settings input {
+    width: 50px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.log-container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#log-list {
+    list-style-type: none;
+    padding: 0;
+    max-height: 150px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+#log-list li {
+    margin-bottom: 5px;
+}
