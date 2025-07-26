@@ -1,53 +1,162 @@
 body {
-    font-family: sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #f0f0f0;
+    background-color: #282c34; /* Dark background */
+    color: #e0e0e0; /* Light text */
     margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.pomodoro-app {
+    background-color: #3a404a; /* Slightly lighter dark for container */
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+}
+
+h1 {
+    color: #61dafb; /* Accent color */
+    margin-bottom: 30px;
+    font-size: 2.5rem;
 }
 
 .timer-container {
-    font-size: 6rem;
-    margin-bottom: 20px;
+    font-size: 7rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #ffffff;
+    letter-spacing: 2px;
 }
 
 .controls button {
-    font-size: 1.2rem;
-    padding: 10px 20px;
+    background-color: #61dafb; /* Accent color for buttons */
+    color: #282c34;
+    border: none;
+    border-radius: 8px;
+    padding: 15px 30px;
     margin: 0 10px;
+    font-size: 1.3rem;
+    font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.controls button:hover {
+    background-color: #21a1f1; /* Darker accent on hover */
+    transform: translateY(-2px);
+}
+
+.controls button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .settings {
-    margin-top: 20px;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid #444;
+}
+
+.settings div {
+    margin-bottom: 15px;
 }
 
 .settings label {
-    font-size: 1rem;
+    font-size: 1.1rem;
+    margin-right: 10px;
+    color: #b0b0b0;
 }
 
 .settings input {
-    width: 50px;
-    font-size: 1rem;
+    width: 80px;
+    padding: 8px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #4a505a;
+    color: #e0e0e0;
+    font-size: 1.1rem;
     text-align: center;
 }
 
 .log-container {
-    margin-top: 30px;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid #444;
+    text-align: left;
+}
+
+.log-container h2 {
+    color: #61dafb;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
     text-align: center;
 }
 
 #log-list {
     list-style-type: none;
     padding: 0;
-    max-height: 150px;
+    max-height: 200px;
     overflow-y: auto;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    background-color: #4a505a;
+    border-radius: 8px;
+    padding: 15px;
 }
 
 #log-list li {
-    margin-bottom: 5px;
+    background-color: #5a606a;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    color: #c0c0c0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#clear-log-btn {
+    background-color: #dc3545; /* Red for clear button */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#clear-log-btn:hover {
+    background-color: #c82333;
+}
+
+/* Basic responsiveness */
+@media (max-width: 600px) {
+    .pomodoro-app {
+        padding: 20px;
+    }
+
+    .timer-container {
+        font-size: 5rem;
+    }
+
+    .controls button {
+        padding: 12px 20px;
+        font-size: 1.1rem;
+        margin: 0 5px;
+    }
+
+    .settings label,
+    .settings input {
+        font-size: 1rem;
+    }
 }
