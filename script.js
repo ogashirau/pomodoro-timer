@@ -10,12 +10,13 @@ const clearLogBtn = document.getElementById('clear-log-btn');
 let timer;
 let isRunning = false;
 let isWorkTime = true;
-let workDuration = 25 * 60; // 25 minutes in seconds
-let breakDuration = 5 * 60; // 5 minutes in seconds
+let workDuration = 25 * 60;
+let breakDuration = 5 * 60;
 let timeLeft = workDuration;
 
-// Web Audio API for sound
-const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+// Defer AudioContext creation until user interaction
+let audioContext = null;
+let isAudioUnlocked = false;
 
 function updateDisplay() {
     const minutes = Math.floor(timeLeft / 60);
@@ -47,45 +48,77 @@ function clearLog() {
     updateLogDisplay();
 }
 
+// --- Audio & Notification ---
+
+// Function to initialize and unlock audio, must be called from a user gesture
+function initializeAudio() {
+    if (isAudioUnlocked) return;
+    if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioContext.state === 'suspended') {
+        audioContext.resume();
+    }
+    isAudioUnlocked = true;
+}
+
 function playSound() {
+    if (!audioContext) return;
     const oscillator = audioContext.createOscillator();
     const gainNode = audioContext.createGain();
     oscillator.connect(gainNode);
     gainNode.connect(audioContext.destination);
     oscillator.type = 'sine';
-    oscillator.frequency.setValueAtTime(440, audioContext.currentTime); // A4 pitch
+    oscillator.frequency.setValueAtTime(440, audioContext.currentTime);
     gainNode.gain.setValueAtTime(0.5, audioContext.currentTime);
     gainNode.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + 1);
     oscillator.start(audioContext.currentTime);
     oscillator.stop(audioContext.currentTime + 1);
 }
 
+// Visual feedback for iOS and other devices without Notification support
+function flashBackground() {
+    let count = 0;
+    const originalColor = document.body.style.backgroundColor;
+    const flashColor = '#f0ad4e'; // A noticeable color
+    const interval = setInterval(() => {
+        document.body.style.backgroundColor = (count % 2 === 0) ? flashColor : originalColor;
+        count++;
+        if (count > 5) { // Flash 3 times
+            clearInterval(interval);
+            document.body.style.backgroundColor = originalColor;
+        }
+    }, 300);
+}
+
 function showNotification(message) {
-    if (Notification.permission === 'granted') {
+    // Check for Notification API support
+    if ('Notification' in window && Notification.permission === 'granted') {
         new Notification('ポモドーロタイマー', { body: message });
-    } else if (Notification.permission !== 'denied') {
-        Notification.requestPermission().then(permission => {
-            if (permission === 'granted') {
-                new Notification('ポモドーロタイマー', { body: message });
-            }
-        });
+    } else {
+        // Fallback for unsupported browsers (like on iOS)
+        flashBackground();
     }
 }
 
+function requestNotificationPermission() {
+    if ('Notification' in window && Notification.permission === 'default') {
+        Notification.requestPermission();
+    }
+}
+
+// --- Timer Logic ---
+
 function switchMode() {
     stopTimer();
-    
     if (isWorkTime) {
-        logSession(); // Log the completed work session
+        logSession();
     }
-
     isWorkTime = !isWorkTime;
     timeLeft = isWorkTime ? workDuration : breakDuration;
-    
     const message = isWorkTime ? '休憩終了！作業を始めましょう。' : '作業終了！休憩時間です。';
     showNotification(message);
     playSound();
-    
     updateDisplay();
     startTimer(); // Automatically start the next timer
 }
@@ -93,15 +126,11 @@ function switchMode() {
 function startTimer() {
     if (isRunning) return;
 
-    // Resume AudioContext on user gesture
-    if (audioContext.state === 'suspended') {
-        audioContext.resume();
-    }
-
-    // Request notification permission on first start
-    if (Notification.permission === 'default') {
-        Notification.requestPermission();
-    }
+    // **CRITICAL for iOS**: Initialize audio on the first user tap
+    initializeAudio();
+    
+    // Also request notification permission on first tap
+    requestNotificationPermission();
 
     isRunning = true;
     timer = setInterval(() => {
@@ -126,7 +155,7 @@ function resetTimer() {
 }
 
 function updateDurations() {
-    if (isRunning) return; // Don't change durations while timer is running
+    if (isRunning) return;
     workDuration = workDurationInput.value * 60;
     breakDuration = breakDurationInput.value * 60;
     if (isWorkTime) {
