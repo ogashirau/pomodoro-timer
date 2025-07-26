@@ -10,6 +10,11 @@ body {
     margin: 0;
     padding: 20px;
     box-sizing: border-box;
+    background-image: url('https://static.wixstatic.com/media/38ba3b_c4fb9fa5573c40768b1f9a39df6a05a2~mv2.png/v1/fill/w_1382,h_1120,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88.png');
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-attachment: fixed; /* Keep background fixed when scrolling */
 }
 
 .pomodoro-app {
