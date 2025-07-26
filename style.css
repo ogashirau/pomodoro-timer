@@ -18,18 +18,18 @@ body {
 }
 
 .pomodoro-app {
-    background-color: #FFFFFF; /* Clean white for the main app container */
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
     border-radius: 20px; /* More rounded corners */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); /* Softer, more spread out shadow */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* Stronger shadow for contrast */
     padding: 40px;
     text-align: center;
     max-width: 550px; /* Slightly wider */
     width: 100%;
-    border: 1px solid #E0E0E0; /* Subtle light border */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle light border */
 }
 
 h1 {
-    color: #00704A; /* Starbucks Green for title */
+    color: #61dafb; /* Accent color for title */
     margin-bottom: 30px;
     font-size: 2.8rem; /* Slightly larger title */
     font-weight: 600;
@@ -39,9 +39,9 @@ h1 {
     font-size: 7.5rem; /* Larger timer font */
     font-weight: bold;
     margin-bottom: 30px;
-    color: #4A2C2A; /* Dark brown for timer */
+    color: #FFFFFF; /* White for timer text */
     letter-spacing: 3px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05); /* Subtle text shadow */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* More pronounced text shadow */
 }
 
 .controls button {
@@ -82,20 +82,20 @@ h1 {
 .settings label {
     font-size: 1.2rem; /* Slightly larger label */
     margin-right: 15px; /* More space */
-    color: #4A2C2A; /* Dark brown for labels */
+    color: #E0E0E0; /* Light grey for labels */
     font-weight: 500;
 }
 
 .settings input {
     width: 90px; /* Slightly wider input */
     padding: 10px;
-    border: 1px solid #CCCCCC; /* Lighter input border */
+    border: 1px solid #555; /* Darker input border */
     border-radius: 8px; /* More rounded input */
-    background-color: #FDFDFD; /* Very light background */
-    color: #4A2C2A;
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent light background */
+    color: #FFFFFF;
     font-size: 1.2rem;
     text-align: center;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05); /* Subtle inner shadow */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2); /* Subtle inner shadow */
 }
 
 .log-container {
@@ -106,7 +106,7 @@ h1 {
 }
 
 .log-container h2 {
-    color: #00704A; /* Starbucks Green for log title */
+    color: #61dafb; /* Accent color for log title */
     font-size: 2rem;
     margin-bottom: 25px;
     text-align: center;
@@ -119,23 +119,23 @@ h1 {
     max-height: 220px; /* Slightly taller log list */
     overflow-y: auto;
     margin-bottom: 25px;
-    background-color: #FDFDFD; /* Very light background for log list */
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent light background for log list */
     border-radius: 12px;
     padding: 20px;
-    border: 1px solid #E0E0E0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 #log-list li {
-    background-color: #F0F0F0; /* Light grey for log items */
+    background-color: rgba(255, 255, 255, 0.15); /* Slightly more opaque light grey for log items */
     margin-bottom: 10px;
     padding: 12px;
     border-radius: 8px;
     font-size: 1rem;
-    color: #4A2C2A;
+    color: #FFFFFF;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow for log items */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for log items */
 }
 
 #clear-log-btn {
